@@ -1,0 +1,355 @@
+
+<html>
+<head>
+<body>
+  <title>AI Image Gallery</title>
+
+  <h2>Style Comparison Table</h2>
+
+  <table class="Style-Table">
+   <caption>Comparison of image generation styles and their best use cases.</caption>
+   <thead>
+    <tr>
+     <th scope= "col">Style</th>
+     <th scope= "col">Description</th>
+     <th scope= "col">Best for</th>
+    </tr>
+   </thead>
+   <tbody>
+
+    <tr>
+     <td>Realistic</td>
+     <td>High-detail, ultra-realistic images with sharp details.</td>
+     <td>Portraits, product photos, branding</td>
+    </tr>
+
+    <tr>
+     <td>Cartoon</td>
+     <td>Bold outlines, vibrant colors, clean character shapes.</td>
+     <td>Children’s books, stickers, illustrations</td>
+    </tr>
+
+    <tr>
+     <td>Anime</td>
+     <td>Soft lighting, expressive eyes, stylized characters.</td>
+     <td>Fan art, character design, posters</td>
+    </tr>
+
+    <tr>
+     <td>Abstract</td>
+     <td>Surreal shapes, expressive patterns, artistic looks.</td>
+     <td>Wall art, backgrounds, creative designs</td>
+    </tr>
+   </tbody>
+  </table>
+
+<br><hr><br>
+
+  <style>
+    .Style-Table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-family: Arial, sans-serif;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .Style-Table caption{
+      caption-side:top;
+      text-align:left;
+      font-weight:500;
+      padding-bottom:8px;
+      font-size:18px;
+      color:#222;
+      margin-bottom:12px;
+    }
+    .Style-Table th,
+    .Style-Table td {
+      border: 1px solid #ddd;
+      padding: 14px 18px;
+      font-weight:400;
+      font-size:16px;
+      color:#333;
+      text-align: left;
+      vertical-align:top;
+    }
+    .Style-Table:tr+tr td {
+      border-top: 1px solid #e5e7eb;
+    }
+    .Style-Table tbody tr:first-child td:first-child {
+    border-top-left-radius: 8px;
+    }
+    .Style-Table tbody tr:first-child td:last-child {
+     border-top-right-radius: 8px;
+     }
+    .Style-Table tbody tr:last-child td:first-child {
+     border-bottom-left-radius: 8px;
+      }
+    .Style-Table tbody tr:last-child td:last-child {
+     border-bottom-right-radius: 8px;
+     }
+
+
+    .Style-Table th {
+      background-color: #e5e7eb;
+      font-weight:600;
+      color:#111;
+      text-align: left;
+      text-transform: uppercase;
+      vertical-align:top;
+      letter-spacing: 0.5px;
+    }
+    .Style-Table tbody tr {
+      transition:transform 0.2s ease-in-out , background-color 0.2s ease , box-shadow: 0.2s ease;
+    }
+    .Style-Table tbody tr:hover {
+      transform: scale(1.01);
+      background-color: #f4f5f7;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+    }
+
+    .Style-Table tr:nth-child(even) {
+      background-color: #fbfbfb;
+    }
+
+    /* responsive make table scroll horizontally on small screen */
+    @media (max-width: 768px) {
+      .Style-Table {
+        display: block;
+        width: 100%;
+        white-space:nowrap;
+        overflow-x: auto;
+        }
+       }
+      .top-nav{
+              position: fixed;
+               top: 0;
+               left: 0;
+               width: 100%;
+               background: #ffffff;
+               box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+               z-index: 9999;
+               padding: 14px 0;
+               text-align: center;
+
+               }
+       .top-nav a{
+                 margin: 0 18px;
+                 font-size: 17px;
+                 color: #333;
+                 font-weight: 600;
+                 text-decoration: none;
+                 padding: 8px 12px;
+                 border-radius: 6px;
+                 transition: background 0.3s ease ,color 0.3s ;
+                 }
+       .top-nav a:hover{
+                 background-color: #f2f2f2;
+                 color: #000;
+                 }
+       .toggle-btn{
+              padding: 10px 16px;
+              background: #222;
+              color: #fff;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+              font-size: 20px;
+              font-weight: 600;
+              transition: background 0.3s ease , color 0.3s ease;
+              }
+       .toggle-btn:hover{
+              background: #000;
+              }
+
+       .dark-mode{
+              background: #000;
+              color: #fff;
+              }
+       .light-mode{
+              background: #111;
+              color: #eee;
+       }
+       .dark-mode .Style-Table{
+              background-color: #1e1e1e;
+              color: #ddd;
+              box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+       }
+       .dark-mode .Style-Table th{
+             background-color: #333;
+             color: #fff;
+       }
+       .dark-mode .Style-Table td{
+             border-color: #444;
+       }
+       .dark-mode .top-nav{
+             background-color: #222;
+             box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+       }
+       .dark-mode .top-nav a{
+             color: #eee;
+       }
+       .dark-mode .top-nav a :hover{
+                 color: #fff;
+                background-color: #444;
+       }
+       .dark-mode .image-card{
+             background-color: #1e1e1e;
+             border: 1px solid #333;
+             box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+
+
+       }
+       .dark-mode .image-card p{
+             color: #ddd;
+       }
+       .download-btn{
+              display: inline-block;
+              margin-top: 8px;
+              padding: 6px 12px;
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+              font-size: 14;
+              font-weight: 600;
+              transition: background 0.3s ease , color 0.3s ease;
+              }
+       .download-btn:hover{
+              background-color: #00569a;
+       }
+    .image-grid { display: grid;
+               grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+                gap: 15px;
+                justify-items: center;
+                align-items: start;
+                 }
+
+
+/* --- Placeholder Card Upgrade (Option D) --- */
+    .image-card {
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background-color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+    .image-card p {
+       margin-top: 8px;
+      font-weight: 600;
+      color: #444;
+      font-size: 16px;
+        }
+    .image-card img { width: 100%; height: auto;
+          border-radius: 8px;
+          transition: transform 0.3s ease , box-shadow 0.3s ease;
+
+    }
+    .image-card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0,0,0.2);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Image Gallery</h1>
+  <button id= "themeToggle" class= "toggle-btn">Dark Mode</button>
+  <p>Select a style from the navigation bar to view generated images.</p>
+       <nav class="top-nav">
+       <a href ="#Realistic">Realistic</a>
+       <a href ="#Cartoon">Cartoon</a>
+       <a href ="#Anime">Anime</a>
+       <a href ="#Abstract">Abstract</a>
+       </nav>
+       <br><br><br>
+  <script>
+     const btn= document.getElementById("themeToggle");
+    btn.onclick= function()
+      {document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")){
+        btn.innerHTML= "Light Mode";
+      }
+      else{
+        btn.innerHTML= "Dark Mode";
+      }
+      };
+  </script>
+<h2 id='Abstract'>Abstract</h2>
+<div class="image-grid">
+<div class="image-card">
+<img src="abstract/img-1.png" alt="img-1">
+<p>img-1</p>
+<a href ="abstract/img-1.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="abstract/img-2.png" alt="img-2">
+<p>img-2</p>
+<a href ="abstract/img-2.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="abstract/img-3.png" alt="img-3">
+<p>img-3</p>
+<a href ="abstract/img-3.png" download class= "download-btn"> Download</a>
+</div>
+</div>
+<h2 id='Anime'>Anime</h2>
+<div class="image-grid">
+<div class="image-card">
+<img src="anime/img-1.png" alt="img-1">
+<p>img-1</p>
+<a href ="anime/img-1.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="anime/img-2.png" alt="img-2">
+<p>img-2</p>
+<a href ="anime/img-2.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="anime/img-3.png" alt="img-3">
+<p>img-3</p>
+<a href ="anime/img-3.png" download class= "download-btn"> Download</a>
+</div>
+</div>
+<h2 id='Cartoon'>Cartoon</h2>
+<div class="image-grid">
+<div class="image-card">
+<img src="cartoon/img-1.png" alt="img-1">
+<p>img-1</p>
+<a href ="cartoon/img-1.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="cartoon/img-2.png" alt="img-2">
+<p>img-2</p>
+<a href ="cartoon/img-2.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="cartoon/img-3.png" alt="img-3">
+<p>img-3</p>
+<a href ="cartoon/img-3.png" download class= "download-btn"> Download</a>
+</div>
+</div>
+<h2 id='Realistic'>Realistic</h2>
+<div class="image-grid">
+<div class="image-card">
+<img src="realistic/img-1.png" alt="img-1">
+<p>img-1</p>
+<a href ="realistic/img-1.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="realistic/img-2.png" alt="img-2">
+<p>img-2</p>
+<a href ="realistic/img-2.png" download class= "download-btn"> Download</a>
+</div>
+<div class="image-card">
+<img src="realistic/img-3.png" alt="img-3">
+<p>img-3</p>
+<a href ="realistic/img-3.png" download class= "download-btn"> Download</a>
+</div>
+</div>
+</body></html>
